@@ -3,7 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>01_03</title>
+    <title>01_05</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="/common/images/favicon.png"
+    />
+    <link rel="stylesheet" href="/common/lib/normalize.css" />
+
+    <script src="/common/js/utils.js"></script>
+
     <style>
       body {
         display: flex;
@@ -55,15 +64,9 @@
       }
 
       function init() {
-        const canvas = document.getElementById('canvas')
+        const canvas = utils.getCanvas('canvas')
 
-        if (!canvas) {
-          console.error('No canvas on this page.')
-
-          return
-        }
-
-        gl = canvas.getContext('webgl2')
+        gl = utils.getGLContext(canvas)
 
         window.onkeydown = checkKey
       }
