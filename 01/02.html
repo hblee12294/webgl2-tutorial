@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01_01</title>
+    <style>
+      canvas {
+        border: 2px dotted coral;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="800" height="600">
+      Your browser does not support the HTML5 canvas element.
+    </canvas>
+
+    <script>
+      'use strict'
+
+      function init() {
+        const canvas = document.getElementById('canvas')
+
+        if (!canvas) {
+          console.error('No canvas on this page.')
+        }
+
+        const gl = canvas.getContext('webgl2')
+        const message = gl
+          ? 'You got WebGL2 context!'
+          : 'WebGL2 is not available.'
+
+        alert(message)
+      }
+
+      init()
+    </script>
+  </body>
+</html>
