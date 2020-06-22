@@ -59,6 +59,8 @@
         iboUsage = 0,
         isVerticesVbo = false,
         isConeVertexBufferVbo = false,
+        isIndicesIbo = false,
+        isConeIndexBufferIbo = false,
         projectionMatrix = mat4.create(),
         modelViewMatrix = mat4.create()
 
@@ -244,11 +246,14 @@
 
         try {
           isVerticesVbo = gl.isBuffer(vertices)
+          isIndicesIbo = gl.isBuffer(indices)
         } catch (e) {
           isVerticesVbo = false
+          isIndicesIbo = false
         }
 
         isConeVertexBufferVbo = gl.isBuffer(coneVertexBuffer)
+        isConeIndexBufferIbo = gl.isBuffer(coneIndexBuffer)
 
         // Clean
         gl.bindVertexArray(null)
@@ -307,6 +312,12 @@
         document.getElementById(
           's-is-cone-vertex-buffer-vbo',
         ).innerText = isConeVertexBufferVbo ? 'Yes' : 'No'
+        document.getElementById('s-is-indices-ibo').innerText = isIndicesIbo
+          ? 'Yes'
+          : 'No'
+        document.getElementById(
+          's-is-cone-index-buffer-ibo',
+        ).innerText = isConeIndexBufferIbo ? 'Yes' : 'No'
       }
 
       function init() {
@@ -362,6 +373,11 @@
         <li>
           Is coneVertexBuffer a VBO?
           <strong id="s-is-cone-vertex-buffer-vbo"></strong>
+        </li>
+        <li>Is indices a IBO? <strong id="s-is-indices-ibo"></strong></li>
+        <li>
+          Is coneIndexBuffer a IBO?
+          <strong id="s-is-cone-index-buffer-ibo"></strong>
         </li>
       </ul>
     </div>
